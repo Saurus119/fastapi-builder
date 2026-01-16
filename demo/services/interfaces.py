@@ -1,0 +1,6 @@
+from typing import Protocol
+
+
+class IUserService(Protocol):
+    def get_user(self, user_id: int) -> dict | None: ...
+    def list_users(self) -> list[dict]: ...
