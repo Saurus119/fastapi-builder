@@ -3,7 +3,7 @@ from __future__ import annotations
 import inspect
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
-from typing import Any, get_type_hints
+from typing import TYPE_CHECKING, Any, get_type_hints
 
 from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
@@ -12,6 +12,9 @@ from starlette.responses import Response
 from starlette.routing import BaseRoute
 
 from .container import Services
+
+if TYPE_CHECKING:
+    from fastapi.params import Depends as DependsType
 
 
 @dataclass
@@ -63,7 +66,7 @@ class InjectableRouter:
         self,
         prefix: str = "",
         tags: list[str] | None = None,
-        dependencies: Sequence[Depends] | None = None,
+        dependencies: Sequence[DependsType] | None = None,
         default_response_class: type[Response] | None = None,
         responses: dict[int | str, dict[str, Any]] | None = None,
         callbacks: list[BaseRoute] | None = None,
@@ -383,7 +386,7 @@ class InjectableRouter:
         """
         router = APIRouter(
             prefix=self.prefix,
-            tags=self.tags if self.tags else None,
+            tags=self.tags if self.tags else None,  # type: ignore[arg-type]
             dependencies=self.dependencies if self.dependencies else None,
             responses=self.responses if self.responses else None,
             redirect_slashes=self.redirect_slashes,

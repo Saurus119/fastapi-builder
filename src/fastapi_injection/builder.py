@@ -266,7 +266,7 @@ class AppBuilder:
         if self._cors_config:
             from starlette.middleware.cors import CORSMiddleware
 
-            app.add_middleware(CORSMiddleware, **self._cors_config)
+            app.add_middleware(CORSMiddleware, **self._cors_config)  # type: ignore[arg-type]
 
         # Apply DI to the app
         self._apply_di(app)
@@ -345,16 +345,16 @@ class AppBuilder:
         for controller in self._controllers:
             if isinstance(controller, InjectableRouter):
                 # Validate InjectableRouter endpoints
-                for route in controller.routes:
+                for pending_route in controller.routes:
                     errors.extend(
-                        self._services.validate_endpoint(route.endpoint)
+                        self._services.validate_endpoint(pending_route.endpoint)
                     )
             else:
                 # Validate standard APIRouter endpoints
-                for route in controller.routes:
-                    if hasattr(route, "endpoint"):
+                for base_route in controller.routes:
+                    if hasattr(base_route, "endpoint"):
                         errors.extend(
-                            self._services.validate_endpoint(route.endpoint)
+                            self._services.validate_endpoint(base_route.endpoint)
                         )
 
         return errors

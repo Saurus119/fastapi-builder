@@ -236,7 +236,7 @@ class Services:
 
             # Get constructor type hints
             try:
-                hints = get_type_hints(impl.__init__)
+                hints = get_type_hints(impl.__init__)  # type: ignore[misc]
             except Exception:
                 hints = {}
 
@@ -300,7 +300,7 @@ class Services:
             return [f"Circular dependency: {cycle}"]
 
         try:
-            hints = get_type_hints(impl.__init__)
+            hints = get_type_hints(impl.__init__)  # type: ignore[misc]
         except Exception:
             return errors
 

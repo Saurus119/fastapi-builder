@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from collections.abc import Callable
+from collections.abc import Awaitable, Callable
 from typing import TYPE_CHECKING
 
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -23,14 +23,14 @@ class RequestScopeMiddleware(BaseHTTPMiddleware):
     async def dispatch(
         self,
         request: Request,
-        call_next: Callable[[Request], Response],
+        call_next: Callable[[Request], Awaitable[Response]],
     ) -> Response:
         """Handle request with scoped dependency injection context."""
         scope_var = get_request_scope()
         token = scope_var.set({})
 
         try:
-            response = await call_next(request)
+            response: Response = await call_next(request)
             return response
         finally:
             # Dispose scoped services (close DB sessions, etc.)

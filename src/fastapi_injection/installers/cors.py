@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -11,7 +12,7 @@ def install_cors(
     allow_credentials: bool = True,
     allow_methods: list[str] | None = None,
     allow_headers: list[str] | None = None,
-) -> callable:
+) -> Callable[[AppBuilder], None]:
     """Create a CORS installer.
 
     Args:

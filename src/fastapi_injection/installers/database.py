@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from typing import TYPE_CHECKING, Any, Protocol
 
 if TYPE_CHECKING:
@@ -22,7 +23,7 @@ class IDbSession(Protocol):
         ...
 
 
-def install_database(connection_string: str) -> callable:
+def install_database(connection_string: str) -> Callable[[AppBuilder], None]:
     """Create a database installer using SQLAlchemy.
 
     This installer configures SQLAlchemy with the provided connection string
@@ -44,8 +45,11 @@ def install_database(connection_string: str) -> callable:
 
     def installer(builder: AppBuilder) -> None:
         try:
-            from sqlalchemy import create_engine
-            from sqlalchemy.orm import Session, sessionmaker
+            from sqlalchemy import create_engine  # type: ignore[import-not-found]
+            from sqlalchemy.orm import (  # type: ignore[import-not-found]
+                Session,
+                sessionmaker,
+            )
         except ImportError as e:
             raise ImportError(
                 "SQLAlchemy is required for database support. "
@@ -65,7 +69,7 @@ def install_database(connection_string: str) -> callable:
     return installer
 
 
-def install_database_with_engine(engine: Any) -> callable:
+def install_database_with_engine(engine: Any) -> Callable[[AppBuilder], None]:
     """Create a database installer using an existing SQLAlchemy engine.
 
     Args:
