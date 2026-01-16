@@ -17,8 +17,8 @@ from __future__ import annotations
 
 from typing import TypeVar
 
+from .exceptions import ServiceNotRegisteredError
 from .patch import get_global_services
-from .exceptions import ServiceNotRegisteredError, ScopeNotFoundError
 
 T = TypeVar("T")
 

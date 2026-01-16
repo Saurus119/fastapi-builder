@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Callable, Union
+from collections.abc import Callable
+from typing import TYPE_CHECKING
 
 from fastapi import APIRouter, FastAPI
 
@@ -50,7 +51,7 @@ class AppBuilder:
 
     def __init__(self) -> None:
         self._services = Services()
-        self._controllers: list[Union[APIRouter, "InjectableRouter"]] = []
+        self._controllers: list[APIRouter | InjectableRouter] = []
         self._installers: list[Callable[[AppBuilder], None]] = []
         self._validation_enabled = True
 
@@ -75,7 +76,7 @@ class AppBuilder:
 
     # Controller registration
     def add_controller(
-        self, router: Union[APIRouter, "InjectableRouter"]
+        self, router: APIRouter | InjectableRouter
     ) -> AppBuilder:
         """Add a controller (router) to the application.
 

@@ -10,7 +10,8 @@ class ServiceNotRegisteredError(Exception):
             super().__init__(service_type_or_message)
         else:
             self.service_type = service_type_or_message
-            super().__init__(f"Service '{service_type_or_message.__name__}' is not registered")
+            name = service_type_or_message.__name__
+            super().__init__(f"Service '{name}' is not registered")
 
 
 class CircularDependencyError(Exception):

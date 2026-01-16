@@ -21,7 +21,8 @@ from __future__ import annotations
 
 import functools
 import inspect
-from typing import Any, Callable, Protocol, TYPE_CHECKING, runtime_checkable
+from collections.abc import Callable
+from typing import TYPE_CHECKING, Any, Protocol
 
 from fastapi import Depends
 
@@ -29,18 +30,18 @@ if TYPE_CHECKING:
     from .container import Services
 
 # Global registry - shared across all Services instances
-_global_services: "Services | None" = None
+_global_services: Services | None = None
 _patched = False
 _original_analyze_param: Any = None
 
 
-def set_global_services(services: "Services") -> None:
+def set_global_services(services: Services) -> None:
     """Set the global services container for injection."""
     global _global_services
     _global_services = services
 
 
-def get_global_services() -> "Services | None":
+def get_global_services() -> Services | None:
     """Get the global services container."""
     return _global_services
 
@@ -114,8 +115,8 @@ def _apply_patch() -> None:
             )
 
             # Determine if this parameter should be treated as an injectable service:
-            # 1. If it's a Protocol or ABC → always treat as injectable (works before registration)
-            # 2. If services exist and the type is registered → treat as injectable (for concrete classes)
+            # 1. Protocol/ABC → always injectable (works before registration)
+            # 2. Registered concrete class → injectable
             services = get_global_services()
             is_injectable = False
 
@@ -137,8 +138,8 @@ def _apply_patch() -> None:
                         if svc is None:
                             from .exceptions import ServiceNotRegisteredError
                             raise ServiceNotRegisteredError(
-                                f"No service container configured. "
-                                f"Make sure to create an AppBuilder before handling requests."
+                                "No service container configured. "
+                                "Create an AppBuilder before handling requests."
                             )
                         if not svc.is_registered(svc_type):
                             from .exceptions import ServiceNotRegisteredError
@@ -169,7 +170,8 @@ def _apply_patch() -> None:
         import warnings
         warnings.warn(
             f"Failed to patch FastAPI for automatic DI. "
-            f"Use InjectableRouter instead. Error: {e}"
+            f"Use InjectableRouter instead. Error: {e}",
+            stacklevel=2,
         )
 
 

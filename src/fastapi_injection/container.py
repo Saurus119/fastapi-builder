@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from contextvars import ContextVar
 from dataclasses import dataclass
-from typing import Callable, TypeVar, get_type_hints
+from typing import TypeVar, get_type_hints
 
 from .exceptions import (
     CircularDependencyError,
@@ -256,7 +257,7 @@ class Services:
         """Validate all registrations and return list of errors."""
         errors: list[str] = []
 
-        for interface, descriptor in self._registrations.items():
+        for _interface, descriptor in self._registrations.items():
             if descriptor.factory:
                 # Can't validate factory dependencies
                 continue

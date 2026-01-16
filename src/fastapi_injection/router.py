@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import inspect
-from dataclasses import dataclass, field
-from typing import Any, Callable, Sequence, get_type_hints
+from collections.abc import Callable, Sequence
+from dataclasses import dataclass
+from typing import Any, get_type_hints
 
 from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
