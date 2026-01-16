@@ -1,4 +1,4 @@
-# fastapi-injection
+# fastapi-builder
 
 ASP.NET Core-style dependency injection for FastAPI - clean controllers, builder pattern, zero boilerplate.
 
@@ -14,12 +14,12 @@ ASP.NET Core-style dependency injection for FastAPI - clean controllers, builder
 ## Installation
 
 ```bash
-pip install fastapi-injection
+pip install fastapi-builder
 ```
 
 With SQLAlchemy support:
 ```bash
-pip install fastapi-injection[sqlalchemy]
+pip install fastapi-builder[sqlalchemy]
 ```
 
 ## Quick Start

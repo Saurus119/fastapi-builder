@@ -1,12 +1,12 @@
 [project]
-name = "fastapi-injection"
-version = "0.1.0"
+name = "fastapi-builder"
+version = "0.1.0a1"
 description = "ASP.NET Core-style dependency injection for FastAPI"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
 authors = [
-    { name = "Your Name", email = "your@email.com" }
+    { name = "Jan Klečka", email = "jan.klecka12@gmail.com" }
 ]
 keywords = [
     "fastapi",
@@ -49,10 +49,10 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/fastapi-injection"
-Documentation = "https://github.com/yourusername/fastapi-injection#readme"
-Repository = "https://github.com/yourusername/fastapi-injection"
-Issues = "https://github.com/yourusername/fastapi-injection/issues"
+Homepage = "https://github.com/Saurus119/fastapi-builder"
+Documentation = "https://github.com/Saurus119/fastapi-builder#readme"
+Repository = "https://github.com/Saurus119/fastapi-builder"
+Issues = "https://github.com/Saurus119/fastapi-builder/issues"
 
 [build-system]
 requires = ["hatchling"]
