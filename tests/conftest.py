@@ -4,7 +4,6 @@ from typing import Protocol
 
 import pytest
 from fastapi import APIRouter
-from fastapi.testclient import TestClient
 
 from fastapi_injection import AppBuilder, Services
 

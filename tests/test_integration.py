@@ -1,19 +1,18 @@
 """Integration tests for fastapi-injection."""
 
-import pytest
 from fastapi import APIRouter, FastAPI
 from fastapi.testclient import TestClient
 
-from fastapi_injection import AppBuilder, InjectableRouter, ValidationError
+from fastapi_injection import AppBuilder, InjectableRouter
 
 from .conftest import (
-    IGreetingService,
-    GreetingService,
-    IUserRepository,
-    UserRepository,
-    IUserService,
-    UserService,
     CounterService,
+    GreetingService,
+    IGreetingService,
+    IUserRepository,
+    IUserService,
+    UserRepository,
+    UserService,
 )
 
 
@@ -269,12 +268,8 @@ class TestInstallerPattern:
         app = builder.build()
 
         # Check that CORS middleware was added
-        middleware_classes = [
-            type(m).__name__
-            for m in app.user_middleware
-        ]
-        # Note: The middleware names might differ, but we can test the behavior
         assert app is not None
+        assert len(app.user_middleware) > 0
 
 
 class TestMultipleControllers:

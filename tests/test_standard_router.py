@@ -9,16 +9,16 @@ from fastapi import APIRouter
 from fastapi.testclient import TestClient
 
 from fastapi_injection import AppBuilder
-from fastapi_injection.patch import _reset_patch, _apply_patch
+from fastapi_injection.patch import _apply_patch, _reset_patch
 
 from .conftest import (
-    IGreetingService,
-    GreetingService,
-    IUserRepository,
-    UserRepository,
-    IUserService,
-    UserService,
     CounterService,
+    GreetingService,
+    IGreetingService,
+    IUserRepository,
+    IUserService,
+    UserRepository,
+    UserService,
 )
 
 

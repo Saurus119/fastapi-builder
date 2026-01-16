@@ -6,11 +6,11 @@ from fastapi.testclient import TestClient
 
 from fastapi_injection import AppBuilder, resolve
 from fastapi_injection.exceptions import ServiceNotRegisteredError
-from fastapi_injection.patch import _reset_patch, _apply_patch
+from fastapi_injection.patch import _apply_patch, _reset_patch
 
 from .conftest import (
-    IGreetingService,
     GreetingService,
+    IGreetingService,
     IUserRepository,
     UserRepository,
 )

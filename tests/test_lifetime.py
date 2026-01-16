@@ -1,6 +1,5 @@
 """Tests for service lifetime behavior."""
 
-import pytest
 
 from fastapi_injection import Lifetime, Services
 from fastapi_injection.container import ServiceDescriptor

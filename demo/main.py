@@ -4,10 +4,9 @@ Demo application showing the installer pattern.
 Run with: uvicorn demo.main:app --reload
 """
 
-from fastapi_injection import AppBuilder
-
-from demo.installers import install_repositories, install_services
 from demo.controllers import user_router
+from demo.installers import install_repositories, install_services
+from fastapi_injection import AppBuilder
 
 # Create builder
 builder = AppBuilder()

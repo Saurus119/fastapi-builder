@@ -1,11 +1,10 @@
-from fastapi_injection import Services
-
 from demo.repositories import (
-    IUserRepository,
-    UserRepository,
     IProductRepository,
+    IUserRepository,
     ProductRepository,
+    UserRepository,
 )
+from fastapi_injection import Services
 
 
 def install_repositories(services: Services) -> None:

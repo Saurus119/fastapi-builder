@@ -2,17 +2,17 @@
 
 import pytest
 
-from fastapi_injection import Services, ServiceNotRegisteredError, Lifetime
+from fastapi_injection import ServiceNotRegisteredError, Services
 from fastapi_injection.container import get_request_scope
 
 from .conftest import (
-    IGreetingService,
-    GreetingService,
-    IUserRepository,
-    UserRepository,
-    IUserService,
-    UserService,
     CounterService,
+    GreetingService,
+    IGreetingService,
+    IUserRepository,
+    IUserService,
+    UserRepository,
+    UserService,
 )
 
 

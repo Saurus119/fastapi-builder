@@ -1,6 +1,5 @@
-from fastapi_injection import Services
-
 from demo.services import IUserService, UserService
+from fastapi_injection import Services
 
 
 def install_services(services: Services) -> None:

@@ -3,12 +3,10 @@
 import inspect
 from typing import Protocol
 
-import pytest
-
 from fastapi_injection import Services
 from fastapi_injection.wrapper import wrap_endpoint
 
-from .conftest import IGreetingService, GreetingService
+from .conftest import GreetingService, IGreetingService
 
 
 def _is_depends(obj) -> bool:

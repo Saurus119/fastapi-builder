@@ -5,14 +5,14 @@ import pytest
 from fastapi_injection import AppBuilder, InjectableRouter, Services, ValidationError
 
 from .conftest import (
-    IGreetingService,
     GreetingService,
+    IGreetingService,
     IUserRepository,
-    UserRepository,
     IUserService,
-    UserService,
     ServiceA,
     ServiceB,
+    UserRepository,
+    UserService,
 )
 
 

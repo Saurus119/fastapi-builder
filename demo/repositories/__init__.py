@@ -1,6 +1,6 @@
-from .interfaces import IUserRepository, IProductRepository
-from .user_repository import UserRepository
+from .interfaces import IProductRepository, IUserRepository
 from .product_repository import ProductRepository
+from .user_repository import UserRepository
 
 __all__ = [
     "IUserRepository",
