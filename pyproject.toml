@@ -1,6 +1,6 @@
 [project]
 name = "fastapi-builder"
-version = "0.1.0a2"
+version = "0.1.0a3"
 description = "ASP.NET Core-style dependency injection for FastAPI"
 readme = "README.md"
 license = { text = "MIT" }

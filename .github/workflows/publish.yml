@@ -1,8 +1,23 @@
 name: Publish to PyPI
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'  # Triggers on any tag starting with 'v'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 0.1.0a2)'
+        required: true
+        type: string
+      target:
+        description: 'Publish target'
+        required: true
+        type: choice
+        options:
+          - testpypi
+          - pypi
+        default: testpypi
 
 jobs:
   build:
@@ -32,7 +47,9 @@ jobs:
   publish-testpypi:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event.release.prerelease
+    if: |
+      (github.event_name == 'push' && (contains(github.ref, 'a') || contains(github.ref, 'b') || contains(github.ref, 'rc'))) ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'testpypi')
     environment: testpypi
     permissions:
       id-token: write
@@ -52,7 +69,9 @@ jobs:
   publish-pypi:
     needs: build
     runs-on: ubuntu-latest
-    if: "!github.event.release.prerelease"
+    if: |
+      (github.event_name == 'push' && !contains(github.ref, 'a') && !contains(github.ref, 'b') && !contains(github.ref, 'rc')) ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'pypi')
     environment: pypi
     permissions:
       id-token: write
