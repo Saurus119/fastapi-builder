@@ -1,4 +1,4 @@
-"""FastAPI Injection - ASP.NET Core-style dependency injection for FastAPI.
+"""FastAPI Builder - ASP.NET Core-style dependency injection for FastAPI.
 
 This package provides a clean, familiar dependency injection experience for
 FastAPI applications, inspired by ASP.NET Core's DI system.
@@ -14,7 +14,7 @@ Features:
 Example:
     from typing import Protocol
     from fastapi import APIRouter
-    from fastapi_injection import AppBuilder
+    from fastapi_builder import AppBuilder
 
     # Define your services
     class IUserService(Protocol):
@@ -62,4 +62,4 @@ __all__ = [
     "ValidationError",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.1.0b1"

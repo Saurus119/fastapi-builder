@@ -2,7 +2,7 @@
 
 import pytest
 
-from fastapi_injection import AppBuilder, InjectableRouter, Services, ValidationError
+from fastapi_builder import AppBuilder, InjectableRouter, Services, ValidationError
 
 from .conftest import (
     GreetingService,

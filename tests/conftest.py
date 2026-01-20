@@ -5,7 +5,7 @@ from typing import Protocol
 import pytest
 from fastapi import APIRouter
 
-from fastapi_injection import AppBuilder, Services
+from fastapi_builder import AppBuilder, Services
 
 
 # Test interfaces and implementations

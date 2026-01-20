@@ -2,8 +2,8 @@
 
 import pytest
 
-from fastapi_injection import ServiceNotRegisteredError, Services
-from fastapi_injection.container import get_request_scope
+from fastapi_builder import ServiceNotRegisteredError, Services
+from fastapi_builder.container import get_request_scope
 
 from .conftest import (
     CounterService,

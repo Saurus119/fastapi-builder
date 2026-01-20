@@ -4,7 +4,7 @@ from demo.repositories import (
     ProductRepository,
     UserRepository,
 )
-from fastapi_injection import Services
+from fastapi_builder import Services
 
 
 def install_repositories(services: Services) -> None:

@@ -8,7 +8,7 @@ at request time. This allows routers to be defined in separate files and
 imported before services are registered.
 
 Usage:
-    from fastapi_injection import AppBuilder
+    from fastapi_builder import AppBuilder
     from controllers import user_router  # Can import before registering!
 
     builder = AppBuilder()

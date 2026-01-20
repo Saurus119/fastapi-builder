@@ -1,8 +1,8 @@
 """Tests for service lifetime behavior."""
 
 
-from fastapi_injection import Lifetime, Services
-from fastapi_injection.container import ServiceDescriptor
+from fastapi_builder import Lifetime, Services
+from fastapi_builder.container import ServiceDescriptor
 
 
 class TestLifetimeEnum:

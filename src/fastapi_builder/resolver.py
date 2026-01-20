@@ -4,7 +4,7 @@ This module provides a `resolve()` function that can be used to get services
 from anywhere in your code during a request, not just in route handlers.
 
 Usage:
-    from fastapi_injection import resolve
+    from fastapi_builder import resolve
 
     class UserService:
         def get_user(self, id: int):
@@ -42,7 +42,7 @@ def resolve(service_type: type[T]) -> T:
         ScopeNotFoundError: If resolving a scoped service outside a request
 
     Example:
-        from fastapi_injection import resolve
+        from fastapi_builder import resolve
 
         class OrderService:
             def create_order(self, items: list):

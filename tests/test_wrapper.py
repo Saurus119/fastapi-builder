@@ -3,8 +3,8 @@
 import inspect
 from typing import Protocol
 
-from fastapi_injection import Services
-from fastapi_injection.wrapper import wrap_endpoint
+from fastapi_builder import Services
+from fastapi_builder.wrapper import wrap_endpoint
 
 from .conftest import GreetingService, IGreetingService
 

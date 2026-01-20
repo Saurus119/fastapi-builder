@@ -1,4 +1,4 @@
-"""SQLAlchemy example of fastapi-injection usage.
+"""SQLAlchemy example of fastapi-builder usage.
 
 This example demonstrates:
 - Database integration with SQLAlchemy
@@ -9,13 +9,13 @@ This example demonstrates:
 Run with: uvicorn examples.with_sqlalchemy.main:app --reload
 
 Note: Requires sqlalchemy to be installed:
-    pip install fastapi-injection[sqlalchemy]
+    pip install fastapi-builder[sqlalchemy]
 """
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
-from fastapi_injection import AppBuilder
+from fastapi_builder import AppBuilder
 
 from .controllers import router as user_router
 from .models import Base
@@ -58,7 +58,7 @@ builder = AppBuilder()
 builder.with_title("SQLAlchemy Example API")
 builder.with_version("1.0.0")
 builder.with_description(
-    "Example demonstrating fastapi-injection with SQLAlchemy"
+    "Example demonstrating fastapi-builder with SQLAlchemy"
 )
 
 # Install components

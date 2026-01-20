@@ -8,8 +8,8 @@ import pytest
 from fastapi import APIRouter
 from fastapi.testclient import TestClient
 
-from fastapi_injection import AppBuilder
-from fastapi_injection.patch import _apply_patch, _reset_patch
+from fastapi_builder import AppBuilder
+from fastapi_builder.patch import _apply_patch, _reset_patch
 
 from .conftest import (
     CounterService,

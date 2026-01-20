@@ -24,7 +24,7 @@ class AppBuilder:
     that depend on those services. This allows the automatic DI to work.
 
     Example:
-        from fastapi_injection import AppBuilder
+        from fastapi_builder import AppBuilder
 
         # 1. Create builder and register services FIRST
         builder = AppBuilder()

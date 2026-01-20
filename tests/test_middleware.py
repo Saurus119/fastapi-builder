@@ -5,9 +5,9 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from starlette.responses import JSONResponse
 
-from fastapi_injection import ScopeNotFoundError, Services
-from fastapi_injection.container import get_request_scope
-from fastapi_injection.middleware import RequestScopeMiddleware
+from fastapi_builder import ScopeNotFoundError, Services
+from fastapi_builder.container import get_request_scope
+from fastapi_builder.middleware import RequestScopeMiddleware
 
 from .conftest import CounterService
 
