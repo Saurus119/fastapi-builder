@@ -1,9 +1,9 @@
-# fastapi-builder
+# fastapi-app-builder
 
-[![PyPI version](https://img.shields.io/pypi/v/fastapi-builder.svg)](https://pypi.org/project/fastapi-builder/)
-[![Python versions](https://img.shields.io/pypi/pyversions/fastapi-builder.svg)](https://pypi.org/project/fastapi-builder/)
-[![Downloads](https://static.pepy.tech/badge/fastapi-builder)](https://pepy.tech/project/fastapi-builder)
-[![License](https://img.shields.io/pypi/l/fastapi-builder.svg)](https://github.com/Saurus119/fastapi-builder/blob/main/LICENSE)
+[![PyPI version](https://img.shields.io/pypi/v/fastapi-app-builder.svg)](https://pypi.org/project/fastapi-app-builder/)
+[![Python versions](https://img.shields.io/pypi/pyversions/fastapi-app-builder.svg)](https://pypi.org/project/fastapi-app-builder/)
+[![Downloads](https://static.pepy.tech/badge/fastapi-app-builder)](https://pepy.tech/project/fastapi-app-builder)
+[![License](https://img.shields.io/pypi/l/fastapi-app-builder.svg)](https://github.com/Saurus119/fastapi-app-builder/blob/main/LICENSE)
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow.svg?style=flat&logo=buy-me-a-coffee)](https://buymeacoffee.com/saurus119)
 
@@ -21,12 +21,12 @@ ASP.NET Core-style dependency injection for FastAPI - clean controllers, builder
 ## Installation
 
 ```bash
-pip install fastapi-builder
+pip install fastapi-app-builder
 ```
 
 With SQLAlchemy support:
 ```bash
-pip install fastapi-builder[sqlalchemy]
+pip install fastapi-app-builder[sqlalchemy]
 ```
 
 ## Quick Start
@@ -34,7 +34,7 @@ pip install fastapi-builder[sqlalchemy]
 ```python
 from typing import Protocol
 from fastapi import APIRouter
-from fastapi_builder import AppBuilder
+from fastapi_app_builder import AppBuilder
 
 # Define your service interface and implementation
 class IGreetingService(Protocol):
@@ -81,7 +81,7 @@ async def create_user(data: CreateUserDto, user_service: IUserService):
 
 ```python
 # main.py
-from fastapi_builder import AppBuilder
+from fastapi_app_builder import AppBuilder
 from controllers.users import router as user_router
 from services import IUserRepository, UserRepository, IUserService, UserService
 
@@ -141,7 +141,7 @@ builder.services.add_scoped(UserService)
 Use `resolve()` to get services from anywhere in your code during a request:
 
 ```python
-from fastapi_builder import resolve
+from fastapi_app_builder import resolve
 
 class OrderService:
     def create_order(self, items: list):
@@ -168,7 +168,7 @@ Organize service registrations with installers for better modularity:
 
 ```python
 # installers/repositories.py
-from fastapi_builder import Services
+from fastapi_app_builder import Services
 
 def install_repositories(services: Services) -> None:
     services.add_scoped(IUserRepository, UserRepository)
@@ -229,7 +229,7 @@ Use `extend()` to add DI to an existing FastAPI app:
 
 ```python
 from fastapi import FastAPI
-from fastapi_builder import AppBuilder
+from fastapi_app_builder import AppBuilder
 from controllers import user_router
 
 # Create your own FastAPI instance with custom settings
@@ -255,7 +255,7 @@ builder.extend(app)  # Adds DI to existing app
 ```python
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
-from fastapi_builder import AppBuilder
+from fastapi_app_builder import AppBuilder
 
 engine = create_engine("sqlite:///./app.db")
 SessionLocal = sessionmaker(bind=engine)
@@ -316,7 +316,7 @@ The dependency injection container.
 Resolve a service from anywhere during a request:
 
 ```python
-from fastapi_builder import resolve
+from fastapi_app_builder import resolve
 
 service = resolve(IMyService)
 ```

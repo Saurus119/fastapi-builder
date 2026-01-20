@@ -1,5 +1,5 @@
 from demo.services import IUserService, UserService
-from fastapi_builder import Services
+from fastapi_app_builder import Services
 
 
 def install_services(services: Services) -> None:

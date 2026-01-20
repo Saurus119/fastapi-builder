@@ -1,9 +1,9 @@
-"""Basic example of fastapi-builder usage.
+"""Basic example of fastapi-app-builder usage.
 
 Run with: uvicorn examples.basic.main:app --reload
 """
 
-from fastapi_builder import AppBuilder
+from fastapi_app_builder import AppBuilder
 
 from .controllers import counter_router, greeting_router
 from .services import (
@@ -19,7 +19,7 @@ builder = AppBuilder()
 # Configure the application
 builder.with_title("Basic Example API")
 builder.with_version("1.0.0")
-builder.with_description("A simple example demonstrating fastapi-builder")
+builder.with_description("A simple example demonstrating fastapi-app-builder")
 
 # Register services
 # Singleton: Same instance shared across all requests

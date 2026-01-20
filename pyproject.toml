@@ -1,5 +1,5 @@
 [project]
-name = "fastapi-builder"
+name = "fastapi-app-builder"
 version = "0.1.0b1"
 description = "ASP.NET Core-style dependency injection for FastAPI"
 readme = "README.md"
@@ -17,7 +17,7 @@ keywords = [
     "asp.net",
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Framework :: FastAPI",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
@@ -59,7 +59,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/fastapi_builder"]
+packages = ["src/fastapi_app_builder"]
 
 [tool.hatch.build.targets.sdist]
 exclude = [

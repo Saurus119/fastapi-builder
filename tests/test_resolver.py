@@ -4,9 +4,9 @@ import pytest
 from fastapi import APIRouter
 from fastapi.testclient import TestClient
 
-from fastapi_builder import AppBuilder, resolve
-from fastapi_builder.exceptions import ServiceNotRegisteredError
-from fastapi_builder.patch import _apply_patch, _reset_patch
+from fastapi_app_builder import AppBuilder, resolve
+from fastapi_app_builder.exceptions import ServiceNotRegisteredError
+from fastapi_app_builder.patch import _apply_patch, _reset_patch
 
 from .conftest import (
     GreetingService,

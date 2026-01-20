@@ -1,9 +1,9 @@
-"""Integration tests for fastapi-builder."""
+"""Integration tests for fastapi-app-builder."""
 
 from fastapi import APIRouter, FastAPI
 from fastapi.testclient import TestClient
 
-from fastapi_builder import AppBuilder, InjectableRouter
+from fastapi_app_builder import AppBuilder, InjectableRouter
 
 from .conftest import (
     CounterService,

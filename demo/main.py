@@ -6,7 +6,7 @@ Run with: uvicorn demo.main:app --reload
 
 from demo.controllers import user_router
 from demo.installers import install_repositories, install_services
-from fastapi_builder import AppBuilder
+from fastapi_app_builder import AppBuilder
 
 # Create builder
 builder = AppBuilder()

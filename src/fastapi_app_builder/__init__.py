@@ -14,7 +14,7 @@ Features:
 Example:
     from typing import Protocol
     from fastapi import APIRouter
-    from fastapi_builder import AppBuilder
+    from fastapi_app_builder import AppBuilder
 
     # Define your services
     class IUserService(Protocol):
